@@ -6,14 +6,14 @@
 namespace esphome {
 namespace esp_adf {
 
-static const char *const TAG = "idf_media_player";
+static const char *const TAG = "adf_media_player";
 
 void ADFMediaPlayer::setup() {
   state = media_player::MEDIA_PLAYER_STATE_IDLE;
 }
 
 void ADFMediaPlayer::dump_config() {
-  esph_log_config(TAG, "ESP-IDF-MediaPlayer:");
+  esph_log_config(TAG, "ESP-ADF-MediaPlayer:");
   int components = pipeline.get_number_of_elements();
   esph_log_config(TAG, "  Number of ASPComponents: %d", components);
 }
