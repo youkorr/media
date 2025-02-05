@@ -13,7 +13,7 @@ from .. import (
 )
 
 CODEOWNERS = ["@gnumpi"]
-DEPENDENCIES = ["adf_pipeline", "media_player"]
+DEPENDENCIES = ["media_player"]
 
 
 ADFMediaPlayer = esp_adf_ns.class_(
