@@ -11,7 +11,8 @@ enum MediaPlayerState : uint8_t {
   MEDIA_PLAYER_STATE_IDLE = 1,
   MEDIA_PLAYER_STATE_PLAYING = 2,
   MEDIA_PLAYER_STATE_PAUSED = 3,
-  MEDIA_PLAYER_STATE_ANNOUNCING = 4
+  MEDIA_PLAYER_STATE_ANNOUNCING = 4,
+  MEDIA_PLAYER_STATE_STOPPED = 5
 };
 const char *media_player_state_to_string(MediaPlayerState state);
 
