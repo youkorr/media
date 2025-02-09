@@ -232,6 +232,8 @@ void NabuMediaPlayer::watch_media_commands_() {
               this->media_pipeline_->stop();
             }
           }
+          this->state = media_player::MEDIA_PLAYER_STATE_STOPPED;
+          this->publish_state();
           break;
         case media_player::MEDIA_PLAYER_COMMAND_TOGGLE:
           if ((this->audio_mixer_ != nullptr) && this->is_paused_) {
