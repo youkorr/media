@@ -53,6 +53,7 @@ MEDIA_PLAYER_SIMPLE_STATE_TRIGGER(IdleTrigger, IDLE)
 MEDIA_PLAYER_SIMPLE_STATE_TRIGGER(PlayTrigger, PLAYING)
 MEDIA_PLAYER_SIMPLE_STATE_TRIGGER(PauseTrigger, PAUSED)
 MEDIA_PLAYER_SIMPLE_STATE_TRIGGER(AnnouncementTrigger, ANNOUNCING)
+MEDIA_PLAYER_SIMPLE_STATE_TRIGGER(StopTrigger, STOPPED)
 
 template<typename... Ts> class IsIdleCondition : public Condition<Ts...>, public Parented<MediaPlayer> {
  public:
@@ -70,4 +71,4 @@ template<typename... Ts> class IsPausedCondition : public Condition<Ts...>, publ
 };
 
 }  // namespace media_player
-}  // namespace esphome
+}  // namespace esphom
