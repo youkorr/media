@@ -60,7 +60,7 @@ VolumeSetAction = media_player_ns.class_(
 
 
 CONF_ON_PLAY = "on_play"
-CONF_ON_PAUSE = "on_pause"
+CONF_ON_PAUSE = "on_stop"
 CONF_ON_ANNOUNCEMENT = "on_announcement"
 CONF_MEDIA_URL = "media_url"
 
