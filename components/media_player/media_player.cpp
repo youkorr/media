@@ -17,6 +17,8 @@ const char *media_player_state_to_string(MediaPlayerState state) {
       return "PAUSED";
     case MEDIA_PLAYER_STATE_ANNOUNCING:
       return "ANNOUNCING";
+    case MEDIA_PLAYER_STATE_STOPPED:
+      return "STOPPED";
     case MEDIA_PLAYER_STATE_NONE:
     default:
       return "UNKNOWN";
