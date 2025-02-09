@@ -61,6 +61,7 @@ VolumeSetAction = media_player_ns.class_(
 
 CONF_ON_PLAY = "on_play"
 CONF_ON_PAUSE = "on_pause"
+CONF_ON_STOP = "on_stop"
 CONF_ON_ANNOUNCEMENT = "on_announcement"
 CONF_MEDIA_URL = "media_url"
 
@@ -68,6 +69,7 @@ StateTrigger = media_player_ns.class_("StateTrigger", automation.Trigger.templat
 IdleTrigger = media_player_ns.class_("IdleTrigger", automation.Trigger.template())
 PlayTrigger = media_player_ns.class_("PlayTrigger", automation.Trigger.template())
 PauseTrigger = media_player_ns.class_("PauseTrigger", automation.Trigger.template())
+StopTrigger = media_player_ns.class_("StopTrigger", automation.Trigger.template())
 AnnoucementTrigger = media_player_ns.class_(
     "AnnouncementTrigger", automation.Trigger.template()
 )
@@ -88,6 +90,9 @@ async def setup_media_player_core_(var, config):
         trigger = cg.new_Pvariable(conf[CONF_TRIGGER_ID], var)
         await automation.build_automation(trigger, [], conf)
     for conf in config.get(CONF_ON_PAUSE, []):
+        trigger = cg.new_Pvariable(conf[CONF_TRIGGER_ID], var)
+        await automation.build_automation(trigger, [], conf)
+    for conf in config.get(CONF_ON_STOP, []):
         trigger = cg.new_Pvariable(conf[CONF_TRIGGER_ID], var)
         await automation.build_automation(trigger, [], conf)
     for conf in config.get(CONF_ON_ANNOUNCEMENT, []):
@@ -122,6 +127,11 @@ MEDIA_PLAYER_SCHEMA = cv.ENTITY_BASE_SCHEMA.extend(
         cv.Optional(CONF_ON_PAUSE): automation.validate_automation(
             {
                 cv.GenerateID(CONF_TRIGGER_ID): cv.declare_id(PauseTrigger),
+            }
+        ),
+        cv.Optional(CONF_ON_STOP): automation.validate_automation(
+            {
+                cv.GenerateID(CONF_TRIGGER_ID): cv.declare_id(StopTrigger),
             }
         ),
         cv.Optional(CONF_ON_ANNOUNCEMENT): automation.validate_automation(
