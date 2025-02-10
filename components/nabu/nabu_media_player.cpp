@@ -215,8 +215,8 @@ void NabuMediaPlayer::watch_media_commands_() {
           this->is_paused_ = false;
           break;
         case media_player::MEDIA_PLAYER_COMMAND_PAUSE:
-          if ((this->audio_mixer_ != nullptr) && !this->is_stopped_) {
-            command_event.command = CommandEventType::STOP_MEDIA;
+          if ((this->audio_mixer_ != nullptr) && !this->is_paused_) {
+            command_event.command = CommandEventType::PAUSE_MEDIA;
             this->audio_mixer_->send_command(&command_event);
           }
           this->state = media_player::MEDIA_PLAYER_STATE_STOPPED;
