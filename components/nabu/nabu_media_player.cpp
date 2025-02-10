@@ -218,6 +218,11 @@ void NabuMediaPlayer::watch_media_commands_() {
           if ((this->audio_mixer_ != nullptr) && !this->is_paused_) {
             command_event.command = CommandEventType::PAUSE_MEDIA;
             this->audio_mixer_->send_command(&command_event);
+            
+            // Arrêter le pipeline média quand on reçoit une commande PAUSE
+            if (this->media_pipeline_ != nullptr) {
+              this->media_pipeline_->stop();
+            }
           }
           this->is_paused_ = true;
           break;
@@ -241,12 +246,16 @@ void NabuMediaPlayer::watch_media_commands_() {
           } else if (this->audio_mixer_ != nullptr) {
             command_event.command = CommandEventType::PAUSE_MEDIA;
             this->audio_mixer_->send_command(&command_event);
+            
+            // Arrêter le pipeline média lors du basculement vers pause
+            if (this->media_pipeline_ != nullptr) {
+              this->media_pipeline_->stop();
+            }
             this->is_paused_ = true;
           }
           break;
         case media_player::MEDIA_PLAYER_COMMAND_MUTE: {
           this->set_mute_state_(true);
-
           this->publish_state();
           break;
         }
